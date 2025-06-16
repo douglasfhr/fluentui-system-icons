@@ -95,3 +95,29 @@ String getReleaseVersion() {
     }
     return version
 }
+{
+  "number": "$$dados_ai_Financeiro",
+  "emission": "$$dados_dataEmissaoNota",
+  "status": "PENDING",
+  "customer_id": "$$dados_idFederal",
+  "document": "$$dados_idFederal",
+  "state_registration_number": "$$dados_idEstadual",
+  "services": [
+    {
+      "description": "$$dados_descricaoServico",
+      "quantity": 1,
+      "value": "$$dados_valorServico",  // Adicionei uma variável para o valor do serviço
+      "service_id": "e78c6d82-501a-4045-90c4-ae5b520f58dc"
+    }
+  ],
+  "payment": {
+    "type": "CASH",
+    "installments": [
+      {
+        "value": "$$dados_valorParcela",
+        "due_date": "$$dados_dataVencimento",
+        "number": "$$dados_numeroParcela"
+      }
+    ]
+  }
+}
