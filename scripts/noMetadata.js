@@ -29,3 +29,52 @@ const findFolders = (folderPath) => {
 };
 
 findFolders(targetFolder);
+---------------------------------------
+const fs = require('fs');
+const path = require('path');
+
+const ASSETS_FOLDER = path.resolve(__dirname, '../assets');
+
+/**
+ * Verifica se o diretório não contém o arquivo metadata.json
+ * @param {string} directory - Caminho do diretório
+ * @returns {boolean}
+ */
+function doesNotHaveMetadata(directory) {
+	try {
+		const files = fs.readdirSync(directory);
+		return !files.includes('metadata.json');
+	} catch (err) {
+		console.warn(`Não foi possível acessar ${directory}: ${err.message}`);
+		return false;
+	}
+}
+
+/**
+ * Busca diretórios que não possuem um arquivo metadata.json
+ * @param {string} folderPath - Caminho da pasta raiz
+ */
+function listFoldersWithoutMetadata(folderPath) {
+	try {
+		const entries = fs.readdirSync(folderPath, { withFileTypes: true });
+
+		const foldersWithoutMetadata = entries
+			.filter((entry) => 
+				entry.isDirectory() &&
+				doesNotHaveMetadata(path.join(folderPath, entry.name))
+			)
+			.map((entry) => entry.name);
+
+		if (foldersWithoutMetadata.length === 0) {
+			console.log('✔️ Todos os diretórios possuem o arquivo metadata.json');
+		} else {
+			console.log(`🚫 Diretórios sem 'metadata.json': ${foldersWithoutMetadata.join(', ')}`);
+		}
+
+	} catch (error) {
+		console.error(`Erro ao ler o diretório ${folderPath}:`, error.message);
+	}
+}
+
+listFoldersWithoutMetadata(ASSETS_FOLDER);
+
