@@ -61,7 +61,8 @@ def parse_files(folder, is_previous=False):
     Args:
         folder (str): Path to the folder containing SVG files.
         is_previous (bool): Indicates whether the folder contains previous SVG versions.
-
+// buscar tabela no banco; 
+// banco; envio automático de email, 12h e 16h
     Returns:
         None
     """
