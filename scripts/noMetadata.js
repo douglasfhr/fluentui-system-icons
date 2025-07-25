@@ -70,7 +70,9 @@ function listFoldersWithoutMetadata(folderPath) {
 		} else {
 			console.log(`🚫 Diretórios sem 'metadata.json': ${foldersWithoutMetadata.join(', ')}`);
 		}
-
+// sem log
+// sem extrato de versao
+// atuar com correçao em php.gerarAmostra
 	} catch (error) {
 		console.error(`Erro ao ler o diretório ${folderPath}:`, error.message);
 	}
