@@ -35,6 +35,8 @@ function checkEmptyFolders(directory) {
         });
     });
 }
-
+// sem contexto no log
+// faltou explixar o metodo usado
+// desconsidrar para aprovação, fugiu do proposiro e da lógica
 // Example usage: check the "test" directory relative to the location of this script
 checkEmptyFolders('../assets/');
